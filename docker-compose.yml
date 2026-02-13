@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  actual-budget:
+    image: actualbudget/actual-server:latest
+    container_name: actual-budget
+    ports:
+      - "3006:3006"
+    volumes:
+      # Mount local directory to persist data
+      - actual-data:/data
+    environment:
+      - NODE_ENV=production
+      - ACTUAL_PORT=3006
+      - DB_PATH=/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3006"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  actual-data:
+    driver: local
