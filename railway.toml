@@ -1,0 +1,33 @@
+[build]
+builder = "docker"
+
+[deploy]
+startCommand = "npm start"
+health_check_path = "/"
+restart_policy = "on_failure"
+
+[[services]]
+name = "actual-budget"
+image = "actualbudget/actual-server:latest"
+port = 3006
+
+# Environment variables
+[env]
+ACTUAL_PORT = "3006"
+NODE_ENV = "production"
+LOG_LEVEL = "info"
+
+# Volumes for persistent storage
+[[volumes]]
+source = "actual-data"
+target = "/data"
+
+# Networking
+[networking]
+port = 3006
+expose = true
+
+# Resource limits (free tier compatible)
+[resources]
+memory = "512Mi"
+cpu = "250m"
