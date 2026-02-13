@@ -1,0 +1,59 @@
+# Node modules
+node_modules/
+npm-debug.log
+package-lock.json
+yarn.lock
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Data
+data/
+actual-data/
+*.db
+*.sqlite
+
+# Backups & exports
+*.zip
+*.tar.gz
+actual-backup-*.json
+
+# Logs
+logs/
+*.log
+
+# Railway
+.railway/
+railway.toml.local
+
+# Temp files
+tmp/
+temp/
+.tmp/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Build output
+dist/
+build/
+.next/
+
+# Cache
+.cache/
+.eslintcache
